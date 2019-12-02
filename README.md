@@ -6,6 +6,9 @@ Specifications
 
 User story:
 
-1. As a user,
-1. So that I can see my bookmarks, 
-1. I would like my bookmarks to be listed.
+```
+As a user,
+So that I can see my bookmarks, 
+I would like my bookmarks to be listed.
+```
+
