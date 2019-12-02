@@ -8,7 +8,7 @@ User story:
 
 ```
 As a user,
-So that I can see my bookmarks, 
-I would like my bookmarks to be listed.
+So that I can easily navigate to my bookmarked websites, 
+I would like to see a bookmark list.
 ```
 
