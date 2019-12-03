@@ -1,1 +1,9 @@
-website
+<body>
+
+<h2>List of saved bookmarks</h2>
+
+<ul style="list-style-type:disc;">
+  <%= @bmarks.map{ |bmark| "<li>" + bmark + "</li>"}.join("") %>
+</ul>  
+
+</body>

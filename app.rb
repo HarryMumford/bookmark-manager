@@ -1,15 +1,16 @@
 require 'sinatra/base'
+require_relative "lib/bmark_list"
 
-class BookmarkManager < Sinatra::Base
+class BmarkManager < Sinatra::Base
 
   get '/' do
-    'Hello worlds!'
+    'homepage'
   end
 
   get '/bookmarks' do
+    @bmarks = BmarkList.all
     erb(:bookmarks)
   end
 
 run! if app_file == $0
-
 end
