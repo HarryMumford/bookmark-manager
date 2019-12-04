@@ -1,14 +1,15 @@
 require 'sinatra/base'
-require_relative "lib/bmark_list"
+require_relative "lib/bookmark"
+require 'pg'
 
-class BmarkManager < Sinatra::Base
+class BookmarkManager < Sinatra::Base
 
   get '/' do
     'homepage'
   end
 
   get '/bookmarks' do
-    @bmarks = BmarkList.all
+    @bookmarks = Bookmark.all
     erb(:bookmarks)
   end
 
