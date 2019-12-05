@@ -1,5 +1,3 @@
-require 'pg'
-
 feature "/bookmarks" do
   scenario "User can view bookmarks on /bookmark route" do
     visit '/bookmarks'
