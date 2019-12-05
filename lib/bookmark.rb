@@ -18,6 +18,12 @@ class Bookmark
     end
   end
 
+  def self.delete(title, url)
+    connect_to_database do |connection|
+      connection.exec("DELETE FROM bookmarks WHERE title = '#{title}' AND url = '#{url}'")
+    end
+  end
+
   def self.all
     connect_to_database do |connection|
       result = connection.exec("SELECT * FROM bookmarks;")

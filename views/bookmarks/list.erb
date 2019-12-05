@@ -4,7 +4,16 @@
 
 <ol>
   <% @bookmarks.each do |bmark| %>
-    <li><a href=<%=bmark.url%>><%=bmark.title%></a></li>
+    <li>
+      <div class=<%= bmark.title.gsub(/ /, "_") %>>
+        <a href=<%=bmark.url%>><%=bmark.title%></a>
+        <form action="/bookmarks/delete" method="post">
+          <input type="hidden" value=<%= bmark.title.inspect %> name="title">
+          <input type="hidden" value=<%= bmark.url %> name="url">
+          <input type="submit" value="delete">
+        </form>
+      </div>
+    </li>
   <% end %>
 </ol>
 
