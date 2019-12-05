@@ -2,7 +2,7 @@ require 'bookmark'
 
 describe '.all' do
   it 'returns a bookmarks list' do
-    connection = PG.connect(dbname: 'test_database')
+    connection = PG.connect(dbname: 'bookmark_manager_test')
 
     connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.test_url_1.co.uk')")
     connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.test_url_2.co.uk')")
