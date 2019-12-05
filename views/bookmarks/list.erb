@@ -3,8 +3,9 @@
 <h2>List of saved bookmarks</h2>
 
 <ol>
-  <%= @bookmarks.map{ |bmark| "<li>" + bmark + "</li>" }.join("") %>
-</ol>  
-
+  <% @bookmarks.each do |bmark| %>
+    <li><a href=<%=bmark.url%>><%=bmark.title%></a></li>
+  <% end %>
+</ol>
 
 </body>

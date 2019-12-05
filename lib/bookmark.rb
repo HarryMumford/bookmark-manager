@@ -1,16 +1,27 @@
 require 'pg'
 
 class Bookmark
-  def self.create(url)
+  attr_reader :title, :url
+
+  def initialize(title, url)
+    @title = title
+    @url = url
+  end
+
+  def ==(other)
+    title == other.title && url == other.url
+  end
+
+  def self.create(title, url)
     connect_to_database do |connection|
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('#{url}')")
+      connection.exec("INSERT INTO bookmarks (title, url) VALUES ('#{title}', '#{url}')")
     end
   end
 
   def self.all
     connect_to_database do |connection|
       result = connection.exec("SELECT * FROM bookmarks;")
-      result.map { |bmark| bmark['url'] }
+      result.map { |bmark| Bookmark.new(bmark['title'], bmark['url']) }
     end
   end
 
