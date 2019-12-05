@@ -1,18 +1,16 @@
-require 'bookmark'
-
-describe '.all' do
-  it 'returns a bookmarks list' do
+feature "/bookmarks" do
+  scenario "User can view bookmarks on /bookmark route" do
     connection = PG.connect(dbname: 'test_database')
 
     connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.test_url_1.co.uk')")
     connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.test_url_2.co.uk')")
     connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.test_url_3.co.uk')")
-    
-    bookmarks = Bookmark.all
 
-    expect(bookmarks).to include "http://www.test_url_1.co.uk"
-    expect(bookmarks).to include "http://www.test_url_2.co.uk"
-    expect(bookmarks).to include "http://www.test_url_3.co.uk"
+    visit '/bookmarks/list'
+
+    expect(page).to have_content("http://www.test_url_1.co.uk")
+    expect(page).to have_content("http://www.test_url_2.co.uk")
+    expect(page).to have_content("http://www.test_url_3.co.uk")
   end
 end
- 
+
